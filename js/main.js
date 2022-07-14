@@ -206,8 +206,8 @@ if (zonajug1 == bufon) {
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">Robaste una nueva carta:</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Tener una carta mas mejora tus "combinaciones" y tienes mas posibilidades de elegir una mejor jugada.</p>
-          <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="myTutorial();">Juega 1 carta</a>
+          <p class="animate__animated animate__fadeInLeft">Tener una carta mas mejora tus "combinaciones" y tienes mas posibilidades de elegir una mejor jugada. Cuando sea tu turno y robes una carta tendrás 3 cartas en mano.</p>
+          <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
 
         <div class="card2s positioncard2 ">
@@ -233,15 +233,52 @@ if (zonajug1 == sibila) {
     
     for (let i = "0"; i <= "2"; i++) {
       if (entrada == pc[0].icono[i]) {
-        alert("El jugador gano");
+        
         control = false;
         console.log("Icono: " + pc[0].icono[i] + " Predicción: " + entrada);
         console.log("presiona F5 para iniciar otra partida");
+
+        let borrarzonacarta = document.getElementById('zonacarta');
+        borrarzonacarta.remove();
+        let parrafo = document.createElement("div");
+  
+        parrafo.innerHTML = `
+
+        <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+            <div class="texto-main">
+              <h3 class="animate__animated animate__fadeInLeft">Acertaste en tu predicción</h3>
+              <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+              <p class="animate__animated animate__fadeInLeft">¡Felicitaciones!. Pudiste eliminar a tu rival gracias a tu certera PREDICCIÓN. Tú rival tenia el ÍCONO: ${pc[0].icono}.</p>
+              <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+            </div>
+            <div class="card2s positioncard2 ">
+                <div id="carta0" class="card2 ${pc[0].nombre}"></div>    
+            </div>
+        </div>`;
+        document.getElementById('tutorial').appendChild(parrafo);
         break;
       }
     }
     if (control == true) {
-      alert("Perdiste");
+             
+        let borrarzonacarta = document.getElementById('zonacarta');
+        borrarzonacarta.remove();
+        let parrafo = document.createElement("div");
+  
+        parrafo.innerHTML = `
+
+        <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+            <div class="texto-main">
+              <h3 class="animate__animated animate__fadeInLeft">Mejor suerte la próxima</h3>
+              <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+              <p class="animate__animated animate__fadeInLeft">No acertaste y no pudiste eliminarlo. El juego sigue normal y tendrás otra chance de predecir si te toca otra Sibila.</p>
+              <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+            </div>
+
+        </div>`;
+        document.getElementById('tutorial').appendChild(parrafo);
+        break;
+        
     }
   }
 }
