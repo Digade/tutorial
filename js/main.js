@@ -314,7 +314,7 @@ if (zonajug1 == gangster) {
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">Has empatado</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Tenian la misma combinación, ambos sabrán que cartas tienen y el juego continua normal.</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ejemplo: Par de Q/Q | Simples: A.)</p>
+          <p class="animate__animated animate__fadeInLeft">Tenian la misma combinación, ambos sabrán que cartas tienen y el juego continua normal.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> 10 < J < Q < K < A.</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ejemplo: Par de Q/Q | Simples: A.)</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
 
@@ -341,7 +341,7 @@ if (zonajug1 == gangster) {
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">Has ganado</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Tenias una mejor combinación y eliminaste a tu oponente. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ejemplo: Par de A/A | Simples: J.)</p>
+          <p class="animate__animated animate__fadeInLeft">Tenias una mejor combinación y eliminaste a tu oponente. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> 10 < J < Q < K < A.</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ejemplo: Par de A/A | Simples: J.)</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
 
@@ -370,7 +370,7 @@ if (zonajug1 == gangster) {
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">Has perdido con tu ${jug1[0].combinacion}</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Tenias una menor combinación y fuiste eliminado. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ejemplo: Par de J/J | Simples: K.)</p>
+          <p class="animate__animated animate__fadeInLeft">Tenias una menor combinación y fuiste eliminado. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> 10 < J < Q < K < A.</p><p class="animate__animated animate__fadeInLeft"><b>Par > Simples</b> (ejemplo: Par de J/J | Simples: K.)</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
         
