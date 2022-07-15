@@ -127,7 +127,8 @@ parrafo.innerHTML = `
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">Tus cartas en mano:</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="myTutorial();">Juega 1 carta</a>
+          <p class="animate__animated animate__fadeInLeft">Cliquea una carta para jugarla y hacer su acción.</p>
+          
         </div>
 
         <div id="zonacarta" class="card2s positioncard2 ">
@@ -150,11 +151,24 @@ eliminar(pc[0]);
 console.log(mazo);
 
 //////////// fin - PC roba 1 carta /////////
+let jug1carta1 = document.getElementById('carta0');
+jug1carta1.addEventListener('click', respuestaClick);
+
+let jug1carta2 = document.getElementById('carta1');
+jug1carta2.addEventListener('click', otrorespuestaClick);
+
+function respuestaClick(){
+    numcarta=0;
+    myTutorial();
+}
+function otrorespuestaClick(){
+    numcarta=1;
+    myTutorial();
+}
 
 function myTutorial(){
 /////////////Inicia la ronda y el jugador 1 comienza jugando una carta.
-numcarta = prompt(
-  "Que carta vas a jugar:\n" + "0: " + jug1[0].nombre +"\n" + "1: " + jug1[1].nombre);
+
 
 
 console.log("Jugador 1 juega: " + jug1[numcarta].nombre);
@@ -284,10 +298,10 @@ if (zonajug1 == sibila) {
 }
 
 if (zonajug1 == gangster) {
-  alert("Jugador1 juega Gangster(DUELO)");
+  
 
   if (jug1[0].valor == pc[0].valor) {
-    alert("Empate en la ronda");
+    
     console.log(jug1[0].valor + " vs " + pc[0].valor);
     console.log(jug1[0].combinacion + " vs " + pc[0].combinacion);
     let borrarzonacarta = document.getElementById('zonacarta');
@@ -313,7 +327,7 @@ if (zonajug1 == gangster) {
     </div>`;
     document.getElementById('tutorial').appendChild(parrafo);
   } else if (jug1[0].valor > pc[0].valor) {
-    alert("Gana jugador 1");
+    
     console.log(jug1[0].valor + " vs " + pc[0].valor);
     console.log(jug1[0].combinacion + " vs " + pc[0].combinacion);
     console.log("Gana jugador 1");
@@ -342,7 +356,7 @@ if (zonajug1 == gangster) {
     document.getElementById('tutorial').appendChild(parrafo);
     
   } else {
-    alert("Perdiste");
+    
     console.log(jug1[0].valor + " vs " + pc[0].valor);
     console.log(jug1[0].combinacion + " vs " + pc[0].combinacion);
     console.log("perdiste");
