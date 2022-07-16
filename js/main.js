@@ -98,7 +98,7 @@ let control = true;
 console.log("se reparten 2 cartas para el Jugador 1 (porque el empieza) y solo una carta para la PC");
 
 for (i = 0; i <= 1; i++){
-    jug1[i] = mazo[Math.floor(Math.random() * 3)];
+    jug1[i] = mazo[Math.floor(Math.random() * 4)];
     
     console.log("jugador1 tiene en mano, posicion " + i)
     console.log(jug1[i]);
@@ -251,7 +251,7 @@ if (zonajug1 == sibila) {
         control = false;
         console.log("Icono: " + pc[0].icono[i] + " Predicción: " + entrada);
         console.log("presiona F5 para iniciar otra partida");
-
+        ////meter funcion
         let borrarzonacarta = document.getElementById('zonacarta');
         borrarzonacarta.remove();
         let parrafo = document.createElement("div");
@@ -413,6 +413,32 @@ if (zonajug1 == bruja) {
        </div>
     </div>`;
     document.getElementById('tutorial').appendChild(parrafo);
+}
+
+if (zonajug1 == pope){
+  let borrarzonacarta = document.getElementById('zonacarta');
+  borrarzonacarta.remove();
+  let parrafo = document.createElement("div");
+  
+  parrafo.innerHTML = `
+
+    <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+        <div class="texto-main">
+          <h3 class="animate__animated animate__fadeInLeft">NIEGAS o ACEPTAS las acciones que jueguen tus rivales</h3>
+          <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+          <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
+          <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+        </div>
+
+        <div class="card2s positioncard2">
+          <div id="carta0" class="card2 ${zonajug1.nombre}"></div>    
+       </div>
+    </div>`;
+    document.getElementById('tutorial').appendChild(parrafo);
+}
+
+if (zonajug1 == senadores){
+
 }
 
 }
