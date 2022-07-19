@@ -277,6 +277,9 @@ nav {
   --bruja-oscura1: #fbb2be;
   --bruja-oscura2: #868686;
   --bruja-oscurafront: url(../img/cartabruja-mitad.webp);
+  --pope-a1: #ffe600;
+  --pope-a2: #dd4949;
+  --pope-afront: url(../img/cartapope-utiliza.webp);
   --pope1: #befbb2;
   --pope2: #78df97;
   --popefront: url(../img/cartapope-utiliza.webp);
@@ -382,6 +385,11 @@ nav {
   --front: var(--bruja-oscurafront); }
 
 .card2.pope {
+  --color1: var(--pope-a1);
+  --color2: var(--pope-a22);
+  --front: var(--pope-afront); }
+
+.card2.pope-verde {
   --color1: var(--pope1);
   --color2: var(--pope2);
   --front: var(--popefront); }
@@ -972,7 +980,10 @@ footer {
     width: 450px;
     height: 10px; }
   .navmain {
-    grid-template-areas: "logo menu social-media" "slider slider slider" "main main main" "footer footer footer"; }
+    grid-template-areas: "logo menu social-media"
+ "slider slider slider"
+ "main main main"
+ "footer footer footer"; }
   main .infoback-pag {
     padding: 150px 0 150px 0; }
   .infomain {
