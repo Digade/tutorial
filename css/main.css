@@ -315,7 +315,47 @@ nav {
   --lilithfront: url(../img/cartalilith.webp);
   --lilith-oscura1: #7d668d;
   --lilith-oscura2: #ad6262;
-  --lilith-oscurafront: url(../img/cartalilith-oscura.webp); }
+  --lilith-oscurafront: url(../img/cartalilith-oscura.webp);
+  --icono-mundo: url(../img/mundo.webp);
+  --icono-balanza: url(../img/balanza.webp);
+  --icono-ficha: url(../img/ficha.webp);
+  --icono-calavera: url(../img/calavera.webp);
+  --icono-corona: url(../img/corona.webp);
+  --color-icono1: #fceba1 ;
+  --color-icono2: #fff8d9 ;}
+
+  
+
+.iconos-sibila {
+  width: 50px;
+  height: 50px;
+  padding: 10px 0 10px 0;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: var(--icono);
+  /* box-shadow: -5px -5px 5px -5px var(--color-icono1), 5px 5px 5px -5px var(--color-icono2), -7px -7px 10px -5px transparent, 7px 7px 10px -5px transparent, 0 0 5px 0px rgba(255, 255, 255, 0), 0 55px 35px -20px rgba(0, 0, 0, 0.5); */
+}
+
+.iconos-sibila:hover {
+  box-shadow: -20px -20px 30px -25px var(--color-icono1), 20px 20px 30px -25px var(--color-icono2), -7px -7px 10px -5px var(--color-icono1), 7px 7px 10px -5px var(--color-icono2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px -20px rgba(0, 0, 0, 0.5); }
+
+.iconos-sibila.mundo {
+--icono: var(--icono-mundo);
+}
+.iconos-sibila.balanza {
+  --icono: var(--icono-balanza);
+}
+.iconos-sibila.ficha {
+  --icono: var(--icono-ficha);
+}
+.iconos-sibila.calavera {
+  --icono: var(--icono-calavera);
+}
+.iconos-sibila.corona {
+  --icono: var(--icono-corona);
+}
 
 .card2 {
   width: 61vw;

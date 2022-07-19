@@ -255,11 +255,13 @@ if (zonajug1 == sibila) {
           <h3 class="animate__animated animate__fadeInLeft">Predice el Ícono de tú Rival</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
           <p class="animate__animated animate__fadeInLeft">Si aciertas cliquenado en el ícono podrás eliminarlo.</p>
-          <img id=mundo alt="Ícono de Mundo" src="img/mundo.webp">
-          <img id=balanza alt="Ícono de Mundo" src="img/balanza.webp">
-          <img id=ficha alt="Ícono de Mundo" src="img/ficha.webp">
-          <img id=calavera alt="Ícono de Mundo" src="img/calavera.webp">
-          <img id=corona alt="Ícono de Mundo" src="img/corona.webp">
+          <div class="d-flex align-conteiner-center justify-content-between">
+          <div id="mundo" alt="Ícono de Mundo" class="iconos-sibila mundo">
+          </div>
+          <div id="balanza" alt="Ícono de Balanza" class="iconos-sibila balanza"></div>
+          <div id="ficha" alt="Ícono de Ficha" class="iconos-sibila ficha"></div>
+          <div id="calavera" alt="Ícono de Calavera" class="iconos-sibila calavera"></div>
+          <div id="corona" alt="Ícono de Corona" class="iconos-sibila corona"></div></div>
         </div>
         <div class="card2s positioncard2 ">
             <div id="carta0" class="card2 ${zonajug1.nombre}"></div>    
@@ -286,21 +288,26 @@ if (zonajug1 == sibila) {
 
           function resMundo(){
               entrada = "Mundo";
+              forSibila();
               
           }
           function resBalanza(){
               entrada = "Balanza";
+              forSibila();
           }
 
           function resFicha(){
               entrada = "Ficha";
+              forSibila();
           }
 
           function resCalavera(){
               entrada = "Calavera";
+              forSibila();
           }
           function resCorona(){
               entrada = "Corona";
+              forSibila();
           }
   function forSibila() {
 
@@ -315,7 +322,7 @@ if (zonajug1 == sibila) {
 
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
             <div class="texto-main">
-              <h3 class="animate__animated animate__fadeInLeft">Acertaste en tu predicción</h3>
+              <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
               <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
               <p class="animate__animated animate__fadeInLeft">¡Felicitaciones!. Pudiste eliminar a tu rival gracias a tu certera PREDICCIÓN. Tú rival tenia el ÍCONO: ${pc[0].icono}.</p>
               <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
