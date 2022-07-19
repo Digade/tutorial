@@ -246,13 +246,64 @@ if (zonajug1 == bufon) {
 
 
 if (zonajug1 == sibila) {
-  while (control != false) {
+  
     console.log("Icono de la PC: " + pc[0].icono);
-    alert("Jugador 1 juega Sibila(PREDICCIÓN)");
-    entrada = prompt(
-      "Predice escribiendo el Ícono: \n(Mundo / Balanza / Ficha / Calavera / Corona)"
-    );
-    
+    let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+
+    <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+        <div class="texto-main">
+          <h3 class="animate__animated animate__fadeInLeft">Predice el Ícono de tú Rival</h3>
+          <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+          <p class="animate__animated animate__fadeInLeft">Si aciertas cliquenado en el ícono podrás eliminarlo.</p>
+          <img id=mundo alt="Ícono de Mundo" src="img/mundo.webp">
+          <img id=balanza alt="Ícono de Mundo" src="img/balanza.webp">
+          <img id=ficha alt="Ícono de Mundo" src="img/ficha.webp">
+          <img id=calavera alt="Ícono de Mundo" src="img/calavera.webp">
+          <img id=corona alt="Ícono de Mundo" src="img/corona.webp">
+        </div>
+        <div class="card2s positioncard2 ">
+            <div id="carta0" class="card2 ${zonajug1.nombre}"></div>    
+        </div>
+    </div>`;
+    document.getElementById('tutorial').appendChild(parrafo);
+
+              
+          let iconomundo = document.getElementById('mundo');
+          iconomundo.addEventListener('click', resMundo);
+
+          let iconobalanza  = document.getElementById('balanza');
+          iconobalanza.addEventListener('click', resBalanza);
+
+          let iconoficha = document.getElementById('ficha');
+          iconoficha.addEventListener('click', resFicha);
+
+          let iconocalavera = document.getElementById('calavera');
+          iconocalavera.addEventListener('click', resCalavera);
+
+          let iconocorona = document.getElementById('corona');
+          iconocorona.addEventListener('click', resCorona);
+
+
+          function resMundo(){
+              entrada = "Mundo";
+              
+          }
+          function resBalanza(){
+              entrada = "Balanza";
+          }
+
+          function resFicha(){
+              entrada = "Ficha";
+          }
+
+          function resCalavera(){
+              entrada = "Calavera";
+          }
+          function resCorona(){
+              entrada = "Corona";
+          }
+  function forSibila() {
+
     for (let i = "0"; i <= "2"; i++) {
       if (entrada == pc[0].icono[i]) {
         
@@ -291,7 +342,7 @@ if (zonajug1 == sibila) {
 
         </div>`;
         document.getElementById('tutorial').appendChild(parrafo);
-        break;
+        
         
     }
   }
@@ -405,7 +456,7 @@ if (zonajug1 == pope){
 
     <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
         <div class="texto-main">
-          <h3 class="animate__animated animate__fadeInLeft">NIEGAS o ACEPTAS las acciones que jueguen tus rivales</h3>
+          <h3 class="animate__animated animate__fadeInLeft">NIEGAS o ACEPTAS las acciones de tus rivales</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
           <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>

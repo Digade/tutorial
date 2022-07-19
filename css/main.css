@@ -277,9 +277,9 @@ nav {
   --bruja-oscura1: #fbb2be;
   --bruja-oscura2: #868686;
   --bruja-oscurafront: url(../img/cartabruja-mitad.webp);
-  --pope-a1: #ffe600;
-  --pope-a2: #dd4949;
-  --pope-afront: url(../img/cartapope-utiliza.webp);
+  --pope-a1: #fff9c6;
+  --pope-a2: #ffb8b8;
+  --pope-afront: url(../img/cartapope-niega-acepta.webp);
   --pope1: #befbb2;
   --pope2: #78df97;
   --popefront: url(../img/cartapope-utiliza.webp);
@@ -386,7 +386,7 @@ nav {
 
 .card2.pope {
   --color1: var(--pope-a1);
-  --color2: var(--pope-a22);
+  --color2: var(--pope-a2);
   --front: var(--pope-afront); }
 
 .card2.pope-verde {
