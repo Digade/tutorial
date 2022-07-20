@@ -105,6 +105,74 @@ let numcarta ="";
 let entrada = "";
 let control = true;
 //fin variables para sibila
+
+//////El mundo juega 4 cartas
+
+let parrafo = "";
+let x = 1;
+let puntospartida = x;
+let zonamundo = [];
+console.log("salen las 1ras 4 cartas que juega El Mundo Oscuro");
+
+    for (i = 0; i <= 3; i++){
+        zonamundo[i] = mazo[Math.floor(Math.random() * mazo.length)];
+        
+        console.log("El Mundo Oscuro juega: " + zonamundo[i].nombre)
+        
+
+        
+        function eliminar(nombre){
+            let index = mazo.indexOf(nombre);
+
+            if (index != -1){
+                
+                mazo.splice(index, 1);
+            }
+        }
+
+        eliminar(zonamundo[i]);
+        
+        if (zonamundo[i].nombre == "bruja" || zonamundo[i].nombre == "senadores-abel" || zonamundo[i].nombre == "emperatriz" || zonamundo[i].nombre == "cain" || zonamundo[i].nombre == "lilith"){
+          console.log("punto de partida: " + puntospartida);
+          puntospartida++;
+          console.log("suma +1 porque salio: " + zonamundo[i].nombre + " | Ahora la partida es por: " + puntospartida);
+        }
+
+    }
+
+    console.log("puntos: " + puntospartida + " | Las cartas de El Mundo Oscuro: " + zonamundo[0].nombre + " " + zonamundo[1].nombre + " " + zonamundo[2].nombre + " " + zonamundo[3].nombre);
+
+    let borrarzonacarta = document.getElementById('tutorial').innerHTML = `
+
+        <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+            <div class="texto-main">
+            <h3 class="animate__animated animate__fadeInLeft">El Mundo Oscuro juega 4 cartas</h3>
+            <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+            <p class="animate__animated animate__fadeInLeft">Así inicia la preparación de cada ronda. La partida va por ${puntospartida} punto/s.</p>
+            <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="myMano();">Empezar a jugar</a>
+            </div>
+
+            <div class="d-flex align-content-center justify-content-between">
+              <div class="card2s positioncard-c ">
+              <div id="carta0" class="card2 ${zonamundo[0].nombre}"></div> 
+              </div>
+              <div class="card2s positioncard-b ">
+              <div id="carta0" class="card2 ${zonamundo[1].nombre}"></div> 
+              </div>
+              <div class="card2s positioncard-a ">
+              <div id="carta0" class="card2 ${zonamundo[2].nombre}"></div> 
+              </div>
+              <div class="card2s positioncard ">
+              <div id="carta1" class="card2 ${zonamundo[3].nombre}"></div>    
+              </div>
+            </div>
+        </div>`;
+        
+
+
+function myMano(){
+
+    
 ////////mano de jug1 y pc///////
 
 console.log("se reparten 2 cartas para el Jugador 1 (porque el empieza) y solo una carta para la PC");
@@ -131,9 +199,7 @@ for (i = 0; i <= 1; i++){
 
 
 
-let parrafo = document.createElement("div");
-
-parrafo.innerHTML = `
+let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
     <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
         <div class="texto-main">
@@ -150,7 +216,7 @@ parrafo.innerHTML = `
         <div id="carta1" class="card2 ${jug1[1].nombre}"></div>    
        </div>
     </div>`;
-document.getElementById('tutorial').appendChild(parrafo);
+
 
 //////////// PC roba 1 carta /////////
 console.log("PC roba 1 carta para iniciar la ronda");
@@ -177,6 +243,9 @@ function otrorespuestaClick(){
     numcarta=1;
     myTutorial();
 }
+
+}
+
 
 function myTutorial(){
 /////////////Inicia la ronda y el jugador 1 comienza jugando una carta.
@@ -239,7 +308,7 @@ if (zonajug1 == bufon) {
         <div id="carta1" class="card2 ${jug1[1].nombre}"></div>    
        </div>
     </div>`;
-  document.getElementById('tutorial').appendChild(parrafo);
+  
 }
 
 
@@ -267,7 +336,7 @@ if (zonajug1 == sibila) {
             <div id="carta0" class="card2 ${zonajug1.nombre}"></div>    
         </div>
     </div>`;
-    document.getElementById('tutorial').appendChild(parrafo);
+    
 
               
           let iconomundo = document.getElementById('mundo');
@@ -331,7 +400,7 @@ if (zonajug1 == sibila) {
                 <div id="carta0" class="card2 ${pc[0].nombre}"></div>    
             </div>
         </div>`;
-        document.getElementById('tutorial').appendChild(parrafo);
+        
         break;
       }
     }
@@ -348,7 +417,7 @@ if (zonajug1 == sibila) {
             </div>
 
         </div>`;
-        document.getElementById('tutorial').appendChild(parrafo);
+        
         
         
     }
@@ -379,7 +448,7 @@ if (zonajug1 == gangster) {
           <div id="carta1" class="card2 ${pc[0].nombre}"></div>    
       </div>
     </div>`;
-    document.getElementById('tutorial').appendChild(parrafo);
+    
   } else if (jug1[0].valor > pc[0].valor) {
     
     console.log(jug1[0].valor + " vs " + pc[0].valor);
@@ -389,7 +458,7 @@ if (zonajug1 == gangster) {
 
     <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
         <div class="texto-main">
-          <h3 class="animate__animated animate__fadeInLeft">Has ganado</h3>
+          <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
           <p class="animate__animated animate__fadeInLeft">Tenias una mejor combinación y eliminaste a tu oponente. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> 10 < J < Q < K < A.</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ejemplo: Par de A/A | Simples: J.)</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
@@ -403,7 +472,7 @@ if (zonajug1 == gangster) {
           <div id="carta1" class="card2 ${pc[0].nombre}"></div>    
       </div>
     </div>`;
-    document.getElementById('tutorial').appendChild(parrafo);
+    
     
   } else {
     
@@ -427,7 +496,7 @@ if (zonajug1 == gangster) {
           <div id="carta1" class="card2 ${pc[0].nombre}"></div>    
       </div>
     </div>`;
-    document.getElementById('tutorial').appendChild(parrafo);
+    
     
   }
   console.log("Jugador 1 tiene: " + jug1[0].nombre + " de valor: " + jug1[0].combinacion + "\n" + " la PC tiene: " + pc[0].nombre + " de valor: " + pc[0].combinacion);
@@ -455,7 +524,7 @@ if (zonajug1 == bruja) {
 </div>`;
   
  
-    document.getElementById('tutorial').appendChild(parrafo);
+ 
 }
 
 if (zonajug1 == pope){
@@ -469,11 +538,11 @@ if (zonajug1 == pope){
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
 
-        <div class="card2s positioncard2">
+        <div class="card2s positioncard2 animate__animated animate__fadeInRight">
           <div id="carta0" class="card2 ${zonajug1.nombre}"></div>    
        </div>
     </div>`;
-    document.getElementById('tutorial').appendChild(parrafo);
+    
 }
 
 if (zonajug1 == senadores){

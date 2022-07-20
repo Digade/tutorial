@@ -979,10 +979,27 @@ footer {
       bottom: 0px;
       top: -200px;
       right: -20px; }
+      
     .seomain .positioncard2 {
       bottom: 0px;
       top: 0px;
       right: 20px; }
+    
+    .seomain .positioncard-a {
+      bottom: 0px;
+      top: -135px;
+      right: -10px; }
+    
+    .seomain .positioncard-b {
+      bottom: 0px;
+      top: -70px;
+      right: 0px; }    
+    
+    .seomain .positioncard-c {
+      bottom: 0px;
+      top: 0px;
+      right: 10px; }    
+
   .rev1 {
     flex-direction: row-reverse; }
   .he300 {
