@@ -240,6 +240,14 @@ nav {
     text-shadow: 2px 2px 4px #9b9b9b, 0 0 10px #dac274, 0 0 50px black, 1px 1px 4px black;
     margin: 50px 0px 50px 0px;
     z-index: 999; }
+  .seomain h4 {
+    font-size: 30px !important;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px #dac274;
+    text-align: left;
+    z-index: 999; 
+  }
+
   .seomain .positioncard {
     right: 100px;
     top: 50px; }

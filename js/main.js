@@ -393,6 +393,8 @@ if (zonajug1 == sibila) {
             <div class="texto-main">
               <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
               <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+              <h4 class="animate__animated animate__fadeInLeft">Obtienes ${puntospartida} punto/s.</h4>
+              <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin: 30px 0 30px;">
               <p class="animate__animated animate__fadeInLeft">¡Felicitaciones!. Pudiste eliminar a tu rival gracias a tu certera PREDICCIÓN. Tú rival tenia el ÍCONO: ${pc[0].icono}.</p>
               <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
             </div>
@@ -437,7 +439,7 @@ if (zonajug1 == gangster) {
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">Has empatado</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Tenian la misma combinación, ambos sabrán que cartas tienen y el juego continua normal.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> 10 < J < Q < K < A.</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ejemplo: Par de Q/Q | Simples: A.)</p>
+          <p class="animate__animated animate__fadeInLeft">Tenian la misma combinación, ambos sabrán que cartas tienen y el juego continua normal.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> A > K > Q > J > 10</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ej.: Par de Q (Q/Q) > Simple: A.)</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
 
@@ -460,7 +462,9 @@ if (zonajug1 == gangster) {
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Tenias una mejor combinación y eliminaste a tu oponente. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> 10 < J < Q < K < A.</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ejemplo: Par de A/A | Simples: J.)</p>
+          <h4 class="animate__animated animate__fadeInLeft">Obtienes ${puntospartida} punto/s.</h4>
+              <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin: 30px 0 30px;">
+          <p class="animate__animated animate__fadeInLeft">Tenias una mejor combinación y eliminaste a tu oponente. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> A > K > Q > J > 10</p><p class="animate__animated animate__fadeInLeft">Par > Simples (ej.: Par de A (A/A) > Simple: J.)</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
 
@@ -485,7 +489,7 @@ if (zonajug1 == gangster) {
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">Has perdido con tu ${jug1[0].combinacion}</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Tenias una menor combinación y fuiste eliminado. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> 10 < J < Q < K < A.</p><p class="animate__animated animate__fadeInLeft"><b>Par > Simples</b> (ejemplo: Par de J/J | Simples: K.)</p>
+          <p class="animate__animated animate__fadeInLeft">Tenias una menor combinación y fuiste eliminado. Tu rival tenia: ${pc[0].combinacion}.</p><p class="animate__animated animate__fadeInLeft"><b>Valores:</b> A > K > Q > J > 10</p><p class="animate__animated animate__fadeInLeft"><b>Par > Simples</b> (ej.: Par de J (J/J) > Simples: K.)</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
         
@@ -504,24 +508,49 @@ if (zonajug1 == gangster) {
 }
 
 if (zonajug1 == bruja) {
-  
+  control = true;
   for (const objeto of pc){
     console.log("La PC tiene estas cartas en su mano: " + objeto.combinacion + " / " + objeto.nombre + " / " + objeto.accion);
+
+    if (objeto.nombre == "cain" || objeto.nombre == "lilith") {
+      let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+
+        <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+            <div class="texto-main">
+              <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
+              <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+              <h4 class="animate__animated animate__fadeInLeft">Obtienes ${puntospartida} punto/s.</h4>
+              <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin: 30px 0 30px;">
+              <p class="animate__animated animate__fadeInLeft">Tú rival tenia una carta que al REVELAR perdía. Que lastima debe ser perder así, ¿no?.</p>
+              <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+            </div>
+            <div class="card2s positioncard2 ">
+                <div id="carta0" class="card2 ${pc[0].nombre}"></div>    
+            </div>
+        </div>`;
+        control = false;
+        console.log("Encontro una carta de REVELADO y eliminación: " + objeto.nombre);
+        break;
+    }
+
   }
-  let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
-  <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
-  <div class="texto-main">
-    <h3 class="animate__animated animate__fadeInLeft">Tu Rival tiene:</h3>
-    <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-    <p class="animate__animated animate__fadeInLeft">Saber la carta de tu oponente lo expone para eliminarlo en próximas jugadas.</p>
-    <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+    if (control == true) {
+    let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+
+    <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+    <div class="texto-main">
+      <h3 class="animate__animated animate__fadeInLeft">Tu Rival tiene:</h3>
+      <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+      <p class="animate__animated animate__fadeInLeft">Saber la carta de tu oponente lo expone para eliminarlo en próximas jugadas.</p>
+      <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+    </div>
+
+    <div class="card2s positioncard2 ">
+      <div id="carta0" class="card2 ${pc[0].nombre}"></div>    
   </div>
+  </div>`;}
 
-  <div class="card2s positioncard2 ">
-    <div id="carta0" class="card2 ${pc[0].nombre}"></div>    
- </div>
-</div>`;
   
  
  
@@ -603,7 +632,7 @@ if (zonajug1 == cain){
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">¡Perdiste!</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
+          <p class="animate__animated animate__fadeInLeft">Al jugarla cumples la acción de REVELAR y pierdes la ronda.</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
         </div>
 
