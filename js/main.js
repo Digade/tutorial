@@ -240,27 +240,34 @@ eliminar(pc[0]);
 console.log(mazo);
 
 //////////// fin - PC roba 1 carta /////////
-let jug1carta1 = document.getElementById('carta0');
-jug1carta1.addEventListener('click', respuestaClick);
 
-let jug1carta2 = document.getElementById('carta1');
-jug1carta2.addEventListener('click', otrorespuestaClick);
 
-function respuestaClick(){
-    numcarta=0;
-    myTutorial();
+function inicio(){
+  let jug1carta1 = document.getElementById('carta0');
+  jug1carta1.addEventListener('click', respuestaClick);
+  
+  let jug1carta2 = document.getElementById('carta1');
+  jug1carta2.addEventListener('click', otrorespuestaClick);
+  
+  function respuestaClick(){
+      numcarta=0;
+      myTutorial();
+  }
+  function otrorespuestaClick(){
+      numcarta=1;
+      myTutorial();
+  }
 }
-function otrorespuestaClick(){
-    numcarta=1;
-    myTutorial();
-}
+inicio();
 
 }
 
 
 function myTutorial(){
 /////////////Inicia la ronda y el jugador 1 comienza jugando una carta.
-
+if (zonapc != "") {
+  inicio();
+}
 console.log("el mazo tiene esta cantidad de cartas: " + mazo.length);
 
 console.log("Jugador 1 juega: " + jug1[numcarta].nombre);
@@ -718,7 +725,9 @@ function miRival(){
       robaJug1();
 
       let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
+      <div class="card2s positioncard2 ">
+      <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
+      </div>
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
             <div class="texto-main">
             <p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
@@ -756,7 +765,9 @@ function miRival(){
             
             
             let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
+            <div class="card2s positioncard2 ">
+            <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
+            </div>
             <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
                 <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
                   <h3 class="animate__animated animate__fadeInLeft">¡Perdiste!</h3>
@@ -775,7 +786,9 @@ function miRival(){
         if (control == true) {
           robaJug1();       
           let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
+          <div class="card2s positioncard2 ">
+          <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
+          </div>
             <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
                 <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
                   <h3 class="animate__animated animate__fadeInLeft">Tú rival no acerto. ¡Que suerte la tuya!</h3>
@@ -800,7 +813,9 @@ function miRival(){
         console.log(jug1[0].valor + " vs " + pc[0].valor);
         console.log(jug1[0].combinacion + " vs " + pc[0].combinacion);
         let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
+        <div class="card2s positioncard2 ">
+        <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
+        </div>
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
             <div class="texto-main">
             <p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
@@ -824,7 +839,9 @@ function miRival(){
         console.log(jug1[0].combinacion + " vs " + pc[0].combinacion);
         console.log("Gana jugador 1");
         let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
+        <div class="card2s positioncard2 ">
+        <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
+        </div>
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
             <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
               <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
@@ -851,7 +868,9 @@ function miRival(){
         console.log(jug1[0].combinacion + " vs " + pc[0].combinacion);
         console.log("perdiste");
         let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
+        <div class="card2s positioncard2 ">
+          <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
+          </div>
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
             <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
               <h3 class="animate__animated animate__fadeInLeft">Has perdido con tu ${jug1[0].combinacion}</h3>
@@ -881,7 +900,9 @@ function miRival(){
 
         if (objeto.nombre == "cain" || objeto.nombre == "lilith") {
           let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
+          <div class="card2s positioncard2 ">
+          <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
+          </div>
             <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
                 <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
                   <h3 class="animate__animated animate__fadeInLeft">¡Perdiste!</h3>
@@ -904,7 +925,7 @@ function miRival(){
         if (control == true) {
           robaJug1();
         let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
+          
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
         <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
           <h3 class="animate__animated animate__fadeInLeft">Tú rival te hace REVELAR:</h3>
@@ -929,7 +950,7 @@ function miRival(){
 
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
             <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-              <h3 class="animate__animated animate__fadeInLeft">NIEGAS o ACEPTAS las acciones de tus rivales</h3>
+              <h3 class="animate__animated animate__fadeInLeft">NIEGA o ACEPTA las acciones de tus cartas</h3>
               <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
               <p class="animate__animated animate__fadeInLeft">Si le juegan una carta que lo elimine lo NEGARÁ y el efecto no se produce. Si le juegas algo favorable lo ACEPTARÁ y ese efecto se produce.</p>
               <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="myTutorial();">Volver a jugar</a>
@@ -1022,7 +1043,7 @@ function miRival(){
             <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
               <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
               <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-              <p class="animate__animated animate__fadeInLeft">Tú rival juega esta carta, se cumple su acción de REVELAR y pierde la ronda al no poder o querer perder 1 punto.</p>
+              <p class="animate__animated animate__fadeInLeft">Tú rival juega esta carta, se cumple su acción de REVELAR y pierde la ronda al no poder perder 1 punto.</p>
               <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
             </div>
 
