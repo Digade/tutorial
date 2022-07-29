@@ -128,7 +128,7 @@ let x = 1;
 let puntospartida = x;
 ////localstorage
 
-let puntojug1 = localStorage.getItem('puntos-jugador1');
+
 // let puntopc = localStorage.getItem('puntos-pc');
 // localStorage.setItem('puntos-rival', parseInt(puntopc));
 
@@ -219,9 +219,13 @@ console.log("salen las 1ras 4 cartas que juega El Mundo Oscuro");
         </div>`;
         
 function sumPuntos(){
-  puntojug1 = parseInt(puntojug1) + parseInt(puntospartida);
-  console.log("ganaste estos puntos: " + puntospartida + " tienes estos puntos: " + puntojug1);
-  localStorage.setItem('puntos-jugador1', parseInt(puntojug1));
+    let puntojug1 = localStorage.getItem('puntos-jugador1');
+    puntojug1 = parseInt(puntojug1) + parseInt(puntospartida);
+    console.log("puntos que tienes actuales:");
+    console.log(puntojug1);
+    localStorage.setItem('puntos-jugador1', parseInt(puntojug1));
+
+    if (puntojug1 >= 7) ganaPartida();
 }
 
 function robaJug1(){
@@ -324,8 +328,7 @@ function myMano(){
 }
 
 function myInicio(){
-  if (puntojug1 == 7) {
-    ganaPartida();}
+
   let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
