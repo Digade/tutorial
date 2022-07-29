@@ -1,16 +1,3 @@
-
-      //  let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
-      //  <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
-      //      <div class="texto-main">
-      //        <h3 class="animate__animated animate__fadeInLeft">Mejor suerte la próxima</h3>
-      //        <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-      //        <p class="animate__animated animate__fadeInLeft">No acertaste y no pudiste eliminarlo. El juego sigue normal y tendrás otra chance de predecir si te toca otra Sibila.</p>
-      //        <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
-      //      </div>
-
-      //  </div>`;
-
 class Cartas {
   constructor(combinacion, nombre, icono, accion, valor) {
     this.combinacion = combinacion;
@@ -139,6 +126,41 @@ let control = true;
 let parrafo = "";
 let x = 1;
 let puntospartida = x;
+////localstorage
+
+let puntojug1 = localStorage.getItem('puntos-jugador1');
+// let puntopc = localStorage.getItem('puntos-pc');
+// localStorage.setItem('puntos-rival', parseInt(puntopc));
+
+////localstorage-fin
+
+
+///funcion cuando ganaspartida
+function ganaPartida() {
+  Swal.fire({
+    title: '¡Has ganado el tutorial!',
+    text: '¿Quisieras volver a jugar?',
+    imageUrl: 'https://unsplash.it/400/200',
+    icon: 'success',
+    showCancelButton: true,
+    confirmButtonText: '¡Si, quiero!',
+    cancelButtonText: '¡No, gracias!',
+    reverseButtons: true
+      }).then((result) => {
+      if (result.isConfirmed) {
+          puntojug1 = 0;
+          location. reload();
+      } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+      ) {
+          window.location.href = "https://elmundooscuro.com.ar";
+      }
+      });
+}
+////fin de ganar partida
+
+
 let zonamundo = [];
 console.log("salen las 1ras 4 cartas que juega El Mundo Oscuro");
 
@@ -196,6 +218,11 @@ console.log("salen las 1ras 4 cartas que juega El Mundo Oscuro");
             </div>
         </div>`;
         
+function sumPuntos(){
+  puntojug1 = parseInt(puntojug1) + parseInt(puntospartida);
+  console.log("ganaste estos puntos: " + puntospartida + " tienes estos puntos: " + puntojug1);
+  localStorage.setItem('puntos-jugador1', parseInt(puntojug1));
+}
 
 function robaJug1(){
           cartarandom = mazo[Math.floor(Math.random() * mazo.length)];
@@ -297,6 +324,8 @@ function myMano(){
 }
 
 function myInicio(){
+  if (puntojug1 == 7) {
+    ganaPartida();}
   let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
@@ -474,6 +503,7 @@ if (zonajug1.nombre == "sibila") {
     for (let i = "0"; i <= "2"; i++) {
       if (entrada == pc[0].icono[i]) {
         
+        sumPuntos();
         control = false;
         console.log("Icono: " + pc[0].icono[i] + " Predicción: " + entrada);
         console.log("presiona F5 para iniciar otra partida");
@@ -546,7 +576,7 @@ if (zonajug1.nombre == "gangster") {
     </div>`;
     
   } else if (jug1[0].valor > pc[0].valor) {
-    
+    sumPuntos();
     console.log(jug1[0].valor + " vs " + pc[0].valor);
     console.log(jug1[0].combinacion + " vs " + pc[0].combinacion);
     console.log("Gana jugador 1");
@@ -607,8 +637,10 @@ if (zonajug1.nombre == "bruja") {
     console.log("La PC tiene estas cartas en su mano: " + objeto.combinacion + " / " + objeto.nombre + " / " + objeto.accion);
 
     if (objeto.nombre == "cain" || objeto.nombre == "lilith") {
-      let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+      sumPuntos();
 
+      let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+        
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
             <div class="texto-main">
               <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
@@ -924,7 +956,8 @@ function miRival(){
         </div>`;
         
       } else if (jug1[0].valor > pc[0].valor) {
-        
+
+        sumPuntos();
         console.log(jug1[0].valor + " vs " + pc[0].valor);
         console.log(jug1[0].combinacion + " vs " + pc[0].combinacion);
         console.log("Gana jugador 1");
@@ -1108,7 +1141,8 @@ function miRival(){
     }
 
     if (zonapc == cain){
-      robaJug1();
+      
+      sumPuntos();
       let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
@@ -1126,7 +1160,7 @@ function miRival(){
     }
 
     if (zonapc == lilith){
-      robaJug1();
+      sumPuntos();
       let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
