@@ -148,7 +148,9 @@ function ganaPartida() {
     reverseButtons: true
       }).then((result) => {
       if (result.isConfirmed) {
-          puntojug1 = 0;
+          puntojug1 = localStorage.getItem('puntos-jugador1');
+          puntojug1 = parseInt(puntojug1) * 0;
+          localStorage.setItem('puntos-jugador1', parseInt(puntojug1));
           location. reload();
       } else if (
           /* Read more about handling dismissals below */
@@ -225,7 +227,10 @@ function sumPuntos(){
     console.log(puntojug1);
     localStorage.setItem('puntos-jugador1', parseInt(puntojug1));
 
-    if (puntojug1 >= 7) ganaPartida();
+    if (puntojug1 >= 7){
+      ganaPartida();
+      
+    }
 }
 
 function robaJug1(){
