@@ -116,6 +116,7 @@ let pc = [];
 let zonajug1 = "";
 let zonapc = "";
 let numcarta ="";
+let puntojug1 = 0;
 //variables para sibila
 let entrada = "";
 let control = true;
@@ -221,7 +222,7 @@ console.log("salen las 1ras 4 cartas que juega El Mundo Oscuro");
         </div>`;
         
 function sumPuntos(){
-    let puntojug1 = localStorage.getItem('puntos-jugador1');
+    puntojug1 = localStorage.getItem('puntos-jugador1');
     puntojug1 = parseInt(puntojug1) + parseInt(puntospartida);
     console.log("puntos que tienes actuales:");
     console.log(puntojug1);
