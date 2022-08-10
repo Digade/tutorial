@@ -249,8 +249,25 @@ nav {
   }
 
   .seomain .positioncard {
-    right: 100px;
+    right: 75px;
     top: 50px; }
+
+  .seomain .positioncard--0 {
+      right: 75px;
+      top: 50px; }
+  
+  .seomain .positioncard--1 {
+        right: 75px;
+        top: 50px; }
+
+  .seomain .positioncard--2 {
+        right: 75px;
+        top: 50px; }
+  .seomain .positioncard--3 {
+        right: 75px;
+        top: 50px; }
+
+
   .seomain p {
     font-size: 21px !important;
     font-weight: 100;
@@ -975,7 +992,7 @@ footer {
     margin: 0 30px 0; }
   .seomain {
     display: row;
-    height: 90% !important;
+    height: 1500px!important;
     justify-content: center;
     align-content: center !important;
     align-items: flex-start;
@@ -987,6 +1004,15 @@ footer {
       bottom: 0px;
       top: -200px;
       right: -20px; }
+      .seomain .positioncard-y {
+        bottom: 0px;
+        top: 0px;
+        left: -30px; }
+      .seomain .positioncard-z {
+        padding: 0 30px 0 0;
+        bottom: 0px;
+        top: 0px;
+        right: 0px; }
       
     .seomain .positioncard2 {
       bottom: 0px;
@@ -995,18 +1021,18 @@ footer {
     
     .seomain .positioncard-a {
       bottom: 0px;
-      top: -135px;
-      right: -10px; }
+      top: 0;
+      left: -200px; }
     
     .seomain .positioncard-b {
       bottom: 0px;
-      top: -70px;
-      right: 0px; }    
+      top: -200px;
+      right: 20px; }    
     
     .seomain .positioncard-c {
       bottom: 0px;
-      top: 0px;
-      right: 10px; }    
+      top: -135px;
+      right: -10px; }    
 
   .rev1 {
     flex-direction: row-reverse; }
@@ -1082,3 +1108,12 @@ footer {
       text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px grey; }
   .cont2 {
     flex-direction: row; } }
+    .seomain .positioncard-y {
+      bottom: 0px;
+      top: 0px;
+      left:0px; }
+    .seomain .positioncard-z {
+      
+      bottom: 0px;
+      top: 0px;
+      right: 0px; }
