@@ -1,10 +1,10 @@
 function Iniciarcartitas1() {
-    fetch("/JSON/cartas.JSON")
+    fetch("cartas.json")
       .then((resinInicial) => resinInicial.json())
       .then((res) => {
         const carta10 = res;
        
-        let htmlAuxi = "";
+        let htmlAuxi = '';
         carta10.forEach((cartitas) => {
             htmlAuxi =
             htmlAuxi + `

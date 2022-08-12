@@ -110,7 +110,7 @@ const mazo = [
   cain,
   lilith,
 ];
-jsonCartasYMazo();
+
 let jug1 = [];
 let pc = [];
 let zonajug1 = "";
