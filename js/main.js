@@ -110,7 +110,7 @@ const mazo = [
   cain,
   lilith,
 ];
-
+jsonCartasYMazo();
 let jug1 = [];
 let pc = [];
 let zonajug1 = "";
@@ -263,19 +263,22 @@ function robaPc(){
 } 
 
 function masCartasEnMano(){
-  let b = 0;
-  let manoYcartas = "";
+  
   console.log("inicia generar cartas en el ID bufon");
-      for (const objeto of jug1){
-          manoYcartas = document.getElementById('bufon').innerHTML = `
-          <div id="bufon${b}" class="card2s positioncard--${b}">
-          <div id="carta${b}" class="card2 ${jug1[b].nombre}"></div>    
-          </div>
-          `
-          b++;
-          console.log("final generar cartas en el ID bufon");
+  let htmlAux = '';
+  for (let i = 0; i < jug1.length; i++) {
+      htmlAux =
+          htmlAux + `
+          <div id="bufon${i}" class="card2s positioncard--${i}">
+              <div id="carta${i}" class="card2 ${jug1[i].nombre}">
+              </div>    
+          </div>`;
+          console.log("final generar cartas en el ID bufon. Jugador 1 tiene: " + jug1[i].nombre);
   }
+  document.getElementById('bufon').innerHTML = htmlAux;
+  
 }
+
 
 function myMano(){        
     ////////mano de jug1 y pc///////
@@ -314,13 +317,11 @@ function myMano(){
               
             </div>
 
-            <div id="zonacarta" class="card2s positioncard2 ">
-              <div id="carta0" class="card2 ${jug1[0].nombre}"></div>    
-          </div>
-          <div class="card2s positioncard ">
-            <div id="carta1" class="card2 ${jug1[1].nombre}"></div>    
+            <div id="bufon"> 
+              
           </div>
         </div>`;
+        masCartasEnMano();
 
 
     //////////// PC roba 1 carta /////////
@@ -335,11 +336,17 @@ function myMano(){
 
     //////////// fin - PC roba 1 carta /////////
     let jug1carta1 = document.getElementById('carta0');
-    jug1carta1.addEventListener('click', respuestaClick);
+        jug1carta1.addEventListener('click', respuestaClick);
+        
+        let jug1carta2 = document.getElementById('carta1');
+        jug1carta2.addEventListener('click', otrorespuestaClick);
     
-    let jug1carta2 = document.getElementById('carta1');
-    jug1carta2.addEventListener('click', otrorespuestaClick);
-    
+        let jug1carta3 = document.getElementById('carta2');
+        jug1carta3.addEventListener('click', resClick2);
+        
+        let jug1carta4 = document.getElementById('carta3');
+        jug1carta4.addEventListener('click', resClick3);
+
     function respuestaClick(){
         numcarta=0;
         myTutorial();
@@ -347,6 +354,14 @@ function myMano(){
     function otrorespuestaClick(){
         numcarta=1;
         myTutorial();
+    }
+    function resClick2(){
+      numcarta=2;
+      myTutorial();
+    }
+    function resClick3(){
+    numcarta=3;
+    myTutorial();
     }
 }
 
@@ -362,29 +377,40 @@ function myInicio(){
               
             </div>
             <div id="bufon">
-            <div class="card2s positioncard2 ">
-              <div id="carta0" class="card2 ${jug1[0].nombre}"></div>    
-          </div>
-          <div class="card2s positioncard ">
-            <div id="carta1" class="card2 ${jug1[1].nombre}"></div>    
-          </div>
-          </div>
+            
+            </div>
         </div>`;
 
-  let jug1carta1 = document.getElementById('carta0');
-  jug1carta1.addEventListener('click', respuestaClick);
-  
-  let jug1carta2 = document.getElementById('carta1');
-  jug1carta2.addEventListener('click', otrorespuestaClick);
-  
-  function respuestaClick(){
-      numcarta=0;
-      myTutorial();
-  }
-  function otrorespuestaClick(){
-      numcarta=1;
-      myTutorial();
-  }
+        masCartasEnMano();
+
+        let jug1carta1 = document.getElementById('carta0');
+        jug1carta1.addEventListener('click', respuestaClick);
+        
+        let jug1carta2 = document.getElementById('carta1');
+        jug1carta2.addEventListener('click', otrorespuestaClick);
+    
+        let jug1carta3 = document.getElementById('carta2');
+        jug1carta3.addEventListener('click', resClick2);
+        
+        let jug1carta4 = document.getElementById('carta3');
+        jug1carta4.addEventListener('click', resClick3);
+        
+        function respuestaClick(){
+            numcarta=0;
+            myTutorial();
+        }
+        function otrorespuestaClick(){
+            numcarta=1;
+            myTutorial();
+        }
+        function resClick2(){
+          numcarta=2;
+          myTutorial();
+        }
+        function resClick3(){
+        numcarta=3;
+        myTutorial();
+        }
 }
 
 
@@ -451,9 +477,11 @@ if (zonajug1.nombre == "bufon-roba") {
         </div>
         
         <div id="bufon">
-        ${masCartasEnMano()};
+        
        </div>
     </div>`;
+
+    masCartasEnMano();
     
 }
 

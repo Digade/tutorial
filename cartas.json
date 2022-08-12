@@ -1,0 +1,99 @@
+[
+    {
+      "combinacion": "10",
+      "nombre": "Bufon",
+      "icono": ["Mundo"],
+      "accion": "Todos roban 1 carta",
+      "valor": 1,
+      "imagen": "../img/mini10.webp"
+      
+    },
+
+    {
+        "combinacion": "J",
+        "nombre": "Gangster",
+        "icono": ["Balanza", "Mundo"],
+        "accion": "DUELO entre la mitad de jugadores, la mayor combinación elimina al resto de jug.",
+        "valor": 2,
+        "imagen": "../img/miniJ.webp"
+        
+      },
+    
+      {
+        "combinacion": ["Q","J"],
+        "nombre": "Sibila",
+        "icono": ["Balanza"],
+        "accion": "Elimina a 1 jug. si PREDICES 1 Ícono de su mano.",
+        "valor": 3,
+        "imagen": "../img/miniQJ.webp"
+        
+      },
+
+      {
+        "combinacion": "K",
+        "nombre": "Bruja",
+        "icono": ["Ficha"],
+        "accion": "1 jug. REVELA su mano.",
+        "valor": 4,
+        "imagen": "../img/miniK.webp"
+        
+      },
+      {
+        "combinacion": "A",
+        "nombre": "Pope",
+        "icono": ["Calavera"],
+        "accion": "Si REVELAS, cancela una acción.",
+        "valor": 5,
+        "imagen": "../img/miniA.webp"
+        
+      },
+      {
+        "combinacion": ["10", "10"],
+        "nombre": "Senadores",
+        "icono": ["Ficha"],
+        "accion": "Nombra un valor y toma 1 carta de la mesa.",
+        "valor": 6,
+        "imagen": "../img/mini1010.webp"
+        
+      },
+      {
+        "combinacion": ["J", "J"],
+        "nombre": "Emperador",
+        "icono": ["Corona"],
+        "accion": "Tú y 1 jug INTERMBIAN manos. Luego, entre ustedes, elige quien DESCARTA y RECUPERA su mano.",
+        "valor": 7,
+        "imagen": "../img/miniJJ.webp"
+        
+      },
+    
+      {
+        "combinacion": ["Q", "Q"],
+        "nombre": "Emperatriz",
+        "icono": ["Corona"],
+        "accion": "Todos roban 1 carta",
+        "valor": 8,
+        "imagen": "../img/miniQQ.webp"
+        
+      },
+    
+      {
+        "combinacion": ["K", "K"],
+        "nombre": "Cain",
+        "icono": ["Calavera"],
+        "accion": "REVELA 1 carta y juega a Caín. Si REVELAS esta carta por otro motivo PIERDES",
+        "valor": 9,
+        "imagen": "../img/miniKK.webp"
+      },
+    
+      {
+        "combinacion": ["A", "A"],
+        "nombre": "Lilith",
+        "icono": ["Calavera"],
+        "accion": "Si REVELAS elige: Gastar 1 punto o PIERDES.",
+        "valor": 10,
+        "imagen": "../img/miniAA.webp"
+        
+      }
+    
+]
+ 

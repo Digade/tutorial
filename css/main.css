@@ -247,7 +247,33 @@ nav {
     text-align: left;
     z-index: 999; 
   }
+  /* //////////////tutorial //////////// */
 
+  #bufon0 {
+    margin: 0px;
+  }
+  #bufon1 {
+    margin: 0px;
+  }
+  #bufon2 {
+    margin: 0px;
+  }
+  #bufon3 {
+    margin: 0px;
+  }
+  #carta0 {
+    margin: 0px;
+  }
+  #carta1 {
+    margin: 0px;
+  }
+  #carta2 {
+    margin: 0px;
+  }
+  #carta3 {
+    margin: 0px;
+  }
+  
   .seomain .positioncard {
     right: 75px;
     top: 50px; }
