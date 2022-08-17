@@ -279,19 +279,19 @@ nav {
     top: 50px; }
 
   .seomain .positioncard--0 {
-      right: 75px;
+      left: 75px;
       top: 50px; }
   
   .seomain .positioncard--1 {
-        right: 75px;
-        top: 50px; }
+        left: 100px;
+        top: 0px; }
 
   .seomain .positioncard--2 {
-        right: 75px;
-        top: 50px; }
+        left: 125px;
+        top: -50px; }
   .seomain .positioncard--3 {
-        right: 75px;
-        top: 50px; }
+        left: 150px;
+        top: -100px; }
 
 
   .seomain p {
@@ -433,7 +433,9 @@ nav {
       max-height: 301px; } }
 
 .card2:hover {
-  box-shadow: -20px -20px 30px -25px var(--color1), 20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1), 7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px -20px rgba(0, 0, 0, 0.5); }
+  box-shadow: -20px -20px 30px -25px var(--color1), 20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1), 7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3), 0 55px 35px -20px rgba(0, 0, 0, 0.5); 
+  
+}
 
 .card2.bufon {
   --color1: var(--bufon1);
@@ -575,13 +577,15 @@ nav {
 
 .card2.active:after,
 .card2:hover:after {
+  
   filter: brightness(1) contrast(1);
   opacity: 1; }
 
 .card2.active,
 .card2:hover {
   animation: none;
-  transition: box-shadow 0.1s ease-out; }
+  transition: box-shadow 0.1s ease-out; 
+  }
 
 .card2.active:before,
 .card2:hover:before {
@@ -598,7 +602,8 @@ nav {
 .card2.active:after,
 .card2:hover:after {
   animation: none;
-  transition: none; }
+  transition: none;
+ }
 
 .card2.animated {
   transition: none;

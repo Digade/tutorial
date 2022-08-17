@@ -141,9 +141,11 @@ function ganaPartida() {
   Swal.fire({
     title: '¡Has ganado el tutorial!',
     text: '¿Quisieras volver a jugar?',
-    imageUrl: 'https://unsplash.it/400/200',
+    imageUrl: '/img/LOGOMUNDOOSCUROsombra400x200.png',
     icon: 'success',
     showCancelButton: true,
+    confirmButtonColor: '00aa18',
+    cancelButtonColor: 'afa26b' ,
     confirmButtonText: '¡Si, quiero!',
     cancelButtonText: '¡No, gracias!',
     reverseButtons: true
@@ -160,7 +162,7 @@ function ganaPartida() {
           window.location.href = "https://elmundooscuro.com.ar";
       }
       });
-}
+};
 ////fin de ganar partida
 
 
