@@ -1,93 +1,109 @@
 class Cartas {
-  constructor(combinacion, nombre, icono, accion, valor) {
+  constructor(combinacion, nombre, icono, accion, valor, imagen) {
     this.combinacion = combinacion;
     this.nombre = nombre;
     this.icono = icono;
     this.accion = accion;
     this.valor = valor;
+    this.imagen = imagen;
   }
 }
 
-const bufon = new Cartas("10", "bufon-roba", ["Mundo"], "Todos roban 1 carta", "01");
-const bufon2 = new Cartas("10", "bufon-roba", ["Mundo"], "Todos roban 1 carta", "01");
+const bufon = new Cartas("10", "bufon-roba", ["Mundo"], "Todos roban 1 carta", "01",
+"../img/mini10.webp");
+const bufon2 = new Cartas("10", "bufon-roba", ["Mundo"], "Todos roban 1 carta", "01",
+"../img/mini10.webp");
 const gangster = new Cartas(
   "J",
   "gangster",
   ["Balanza", "Mundo"],
   "DUELO entre la mitad de jugadores, la mayor combinación elimina al resto de jug.",
-  "02"
+  "02",
+  "../img/miniJ.webp"
 );
 const gangster2 = new Cartas(
   "J",
   "gangster",
   ["Balanza", "Mundo"],
   "DUELO entre la mitad de jugadores, la mayor combinación elimina al resto de jug.",
-  "02"
+  "02",
+  "../img/miniJ.webp"
 );
 const sibila = new Cartas(
   ["Q", "J"],
   "sibila",
   ["Balanza"],
   "Elimina a 1 jug. si PREDICES 1 Ícono de su mano.",
-  "03"
+  "03",
+  "../img/miniQJ.webp"
 );
 const sibila2 = new Cartas(
   ["Q", "J"],
   "sibila",
   ["Balanza"],
   "Elimina a 1 jug. si PREDICES 1 Ícono de su mano.",
-  "03"
+  "03",
+  "../img/miniQJ.webp"
 );
-const bruja = new Cartas("K", "bruja", ["Ficha"], "1 jug. REVELA su mano.", "04");
-const bruja2 = new Cartas("K", "bruja", ["Ficha"], "1 jug. REVELA su mano.", "04");
+const bruja = new Cartas("K", "bruja", ["Ficha"], "1 jug. REVELA su mano.", "04",
+"../img/miniK.webp");
+const bruja2 = new Cartas("K", "bruja", ["Ficha"], "1 jug. REVELA su mano.", "04",
+"../img/miniK.webp");
 const pope = new Cartas(
   "A",
   "pope",
   ["Calavera"],
   "Si REVELAS, cancela una acción.",
-  "05"
+  "05",
+  "../img/miniA.webp"
 );
 const pope2 = new Cartas(
   "A",
   "pope",
   ["Calavera"],
   "Si REVELAS, cancela una acción.",
-  "05"
+  "05",
+  "../img/miniA.webp"
 );
 const senadores = new Cartas(
   ["10", "10"],
   "senadores-abel",
   ["Ficha"],
   "Nombra un valor y toma 1 carta de la mesa.",
-  "11"
+  "11",
+  "../img/mini1010.webp"
 );
 const emperador = new Cartas(
   ["J", "J"],
   "emperador",
   ["Corona"],
   "Tú y 1 jug INTERMBIAN manos. Luego, entre ustedes, elige quien DESCARTA y RECUPERA su mano.",
-  "12"
+  "12",
+  "../img/miniJJ.webp"
 );
 const emperatriz = new Cartas(
   ["Q", "Q"],
   "emperatriz",
   ["Ficha", "Mundo", "Corona"],
   "El Mundo juega 1 carta. Todos INTERCAMBIAN manos.",
-  "13"
+  "13",
+  "../img/miniQQ.webp"
 );
 const cain = new Cartas(
   ["K", "K"],
   "cain",
   ["Calavera"],
   "REVELA 1 carta y juega a Caín. Si REVELAS esta carta por otro motivo PIERDES",
-  "14"
+  "14",
+  "../img/miniKK.webp"
 );
 const lilith = new Cartas(
   ["A", "A"],
   "lilith",
   ["Calavera"],
   "Si REVELAS elige: Gastar 1 punto o PIERDES.",
-  "15"
+  "15",
+  "../img/miniAA.webp"
 );
 
 console.log(gangster.icono.join(" , "));
@@ -113,6 +129,7 @@ const mazo = [
 
 let jug1 = [];
 let pc = [];
+let cartasEnMesa = [];
 let zonajug1 = "";
 let zonapc = "";
 let numcarta ="";
@@ -175,7 +192,9 @@ console.log("salen las 1ras 4 cartas que juega El Mundo Oscuro");
         console.log("El Mundo Oscuro juega: " + zonamundo[i].nombre)
         
 
+        cartasEnMesa.push(zonamundo[i]);
         
+
         function eliminar(nombre){
             let index = mazo.indexOf(nombre);
 
@@ -194,6 +213,10 @@ console.log("salen las 1ras 4 cartas que juega El Mundo Oscuro");
         }
 
     }
+    
+    cartasEnMesa.forEach((cartasmesa) => {
+      console.log("estas son las cartas en mesa: " + cartasmesa.nombre);
+    });
 
     console.log("puntos: " + puntospartida + " | Las cartas de El Mundo Oscuro: " + zonamundo[0].nombre + " " + zonamundo[1].nombre + " " + zonamundo[2].nombre + " " + zonamundo[3].nombre);
 
@@ -432,6 +455,12 @@ console.log("Jugador 1 juega: " + jug1[numcarta].nombre);
 
 
   zonajug1 = jug1[numcarta];
+
+  cartasEnMesa.push(zonajug1);
+  
+  cartasEnMesa.forEach((cartasmesa) => {
+    console.log("estas son las cartas en mesa: " + cartasmesa.nombre);
+  });
   
   function eliminarcarta(nombre){
     let index = jug1.indexOf(nombre);
@@ -765,6 +794,9 @@ if (zonajug1.nombre == "pope"){
 if (zonajug1 == senadores){
   robaPc();
   console.log(pc);
+
+  
+
   let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
     <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
@@ -779,6 +811,48 @@ if (zonajug1 == senadores){
           <div id="carta0" class="card2 ${zonajug1.nombre}"></div>    
        </div>
     </div>`;
+
+    let mesaAuxi = '';
+    let nMesa = 0;
+   
+
+    cartasEnMesa.forEach((cartasmesa) => {
+      
+
+      mesaAuxi =
+            mesaAuxi + `
+            <div id="numMesa${nMesa}" class="card bg-dark text-white" style="height: 25vh;background-image: url(${cartasmesa.imagen}); background-position: top center;">
+                      
+                          <div class="col card-img-overlay align-content-flex-end flex-wrap">
+                              <h6>
+                                  • ${cartasmesa.combinacion} •
+                              </h6>
+                              <h6>
+                                  ${cartasmesa.nombre.toUpperCase()}
+                              </h6>
+                          </div>
+                  </div>`;
+
+      console.log("estas son las cartas en mesa: " + cartasmesa.nombre);
+
+            
+    
+      document.getElementById('cards10').innerHTML = mesaAuxi;
+
+    const mesaCarta = document.getElementById(`numMesa${nMesa}`);
+      
+          mesaCarta.onclick = () =>{
+              jug1.push(cartasmesa);
+              miRival();
+              console.log("mi mano es: ");
+              console.log(jug1);
+              document.getElementById('cards10').innerHTML = "";
+          };
+      
+    nMesa++;
+        
+    
+    });
 }
 
 if (zonajug1 == emperador){
@@ -874,7 +948,12 @@ function miRival(){
 
     zonapc = pc[Math.floor(Math.random() * pc.length)];
 
-      
+    cartasEnMesa.push(zonapc);
+    
+    cartasEnMesa.forEach((cartasmesa) => {
+      console.log("estas son las cartas en mesa: " + cartasmesa.nombre);
+    });
+
     function eliminarcartaPC(nombre){
       let index = pc.indexOf(nombre);
 
