@@ -18,6 +18,9 @@
 .botonh {
   margin-top: 00px; }
 
+  #foo {
+    margin: auto;
+  }
 img {
   transition-property: all;
   transition-duration: .5s;
