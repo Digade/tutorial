@@ -154,6 +154,24 @@ let puntospartida = x;
 
 
 ///funcion cuando ganaspartida
+
+function mipm(id) {
+  jug1.push(cartasEnMesa[id]);
+  miRival();
+  console.log("mi mano es: ");
+  console.log(jug1);
+  document.getElementById('cards10').innerHTML = "";
+  
+  let indexMesa = cartasEnMesa.indexOf(element => element.id == id);
+
+
+  if (indexMesa != -1){
+      
+    cartasEnMesa.splice(indexMesa, 1);
+  }
+
+};
+
 function ganaPartida() {
   Swal.fire({
     title: '¡Has ganado el tutorial!',
@@ -801,9 +819,9 @@ if (zonajug1 == senadores){
 
     <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
         <div class="texto-main">
-          <h3 class="animate__animated animate__fadeInLeft">SIN PROGRAMAR</h3>
+          <h3 class="animate__animated animate__fadeInLeft">TOMAS UNA CARTA DE LA MESA</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
+          <p class="animate__animated animate__fadeInLeft">Y nadie podrá PREDECIRTE esa carta.</p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="miRival();">Volver a jugar</a>
         </div>
 
@@ -815,66 +833,16 @@ if (zonajug1 == senadores){
     let mesaAuxi = '';
     let nMesa = 0;
 
-  
-
-    // cartasEnMesa.forEach((cartasmesa) => {
-    //   eval('function myPusheoMesa'+ nMesa +'(){'+' jug1.push(cartaEnMesa[' + nMesa + ']); ' + 'miRival();          console.log("mi mano es: ");              console.log(jug1);              document.getElementById("cards10").innerHTML = "";              let indexMesa = cartasEnMesa.indexOf(cartasmesa);            if (indexMesa != -1)' + '{' + 'cartasEnMesa.splice(indexMesa, 1);' + '};');
-    //   console.log('function myPusheoMesa'+ nMesa +'(){'+' jug1.push(cartaEnMesa[' + nMesa + ']); ' + 'miRival(); console.log("mi mano es: ");  console.log(jug1);  document.getElementById("cards10").innerHTML = "";  let indexMesa = cartasEnMesa.indexOf(cartasmesa); if (indexMesa != -1)' + '{' + 'cartasEnMesa.splice(indexMesa, 1);' + '};');  
-    //   nMesa++;
-      
-    // });
     
-
-    
-
-    let mesaScript = "";
-    for (let i=0; i<cartasEnMesa.length; i++) {
-    
-      
-
-      mesaScript =
-      mesaScript + `
-                  
-                  function miPusheoMesa${i}() {
-                    jug1.push(cartasEnMesa[${i}]);
-                    miRival();
-                    console.log("mi mano es: ");
-                    console.log(jug1);
-                    document.getElementById('cards10').innerHTML = "";
-                    
-                    let indexMesa = cartasEnMesa.indexOf(cartasmesa);
-              
-                  if (indexMesa != -1){
-                      
-                    cartasEnMesa.splice(indexMesa, 1);
-                  }
-              
-                  };
-  
-                  `;
-
-      console.log("CREANDO LAS FUNCIONES MIPUSHEOMESA: " + i);
-
-
-
-      
-      
-
-     
-      
-    };
-    // eval(mesaScript);
-    // console.log(mesaScript);
-    mesaScript();
 
 
 
     cartasEnMesa.forEach((cartasmesa) => {
       
-      mesaAuxi =
-            mesaAuxi + `
+      mesaAuxi +=
+             `
                   
-            <div id="numMesa${nMesa}" class="card bg-dark text-white cardtable" style="height: 25vh;background-image: url(${cartasmesa.imagen}); background-position: top center;" onclick="miPusheoMesa${nMesa}()">
+            <div id="numMesa${nMesa}" class="card bg-dark text-white cardtable" style="height: 25vh;background-image: url(${cartasmesa.imagen}); background-position: top center;" onclick="mipm(${nMesa});">
                       
                           <div class="col card-img-overlay align-content-flex-end flex-wrap">
                               <h6>
@@ -894,175 +862,13 @@ if (zonajug1 == senadores){
       
       document.getElementById('cards10').innerHTML = mesaAuxi;
 
-      // let mesaCarta = "";
-      // mesaCarta = document.getElementById(`numMesa${nMesa}`).onclick = () =>{
-      //           jug1.push(cartasmesa);
-      //           miRival();
-      //           console.log("mi mano es: ");
-      //           console.log(jug1);
-      //           document.getElementById('cards10').innerHTML = "";
-                
-      //           let indexMesa = cartasEnMesa.indexOf(cartasmesa);
-  
-      //         if (indexMesa != -1){
-                  
-      //           cartasEnMesa.splice(indexMesa, 1);
-      //         }
-          
-      //       };
-      
-      // let mesaCarta = document.getElementById(`numMesa${nMesa}`).onclick = 
-      //         jug1.push(cartasmesa);
-            //   miRival();
-            //   console.log("mi mano es: ");
-            //   console.log(jug1);
-            //   document.getElementById('cards10').innerHTML = "";
-
-            //   let indexMesa = cartasEnMesa.indexOf(cartasmesa);
-
-            // if (indexMesa != -1){
-
-      //         cartasEnMesa.splice(indexMesa, 1);
-      //       };
-      // let mesaCarta = [];
-
-
-      // let iconocorona = document.getElementById('corona');
-      //     iconocorona.addEventListener('click', resCorona);
-
-
-      //     function resMundo(){
-      //         entrada = "Mundo";
-      //         forSibila();}
-    
-      
-
-      // let k1 = 'let ';
-      // let k2 = "mesaCarta";
-      // let x3 = 'document.getElementById("numMesa';
-      // eval(k1 + k2 + nMesa + '= ' + '""' + ';');
-      // console.log(k1 + k2 + nMesa + '= ' + '""' + ';');
-      // eval(k2 + nMesa + '= ' + x3 + nMesa + '"' + ');');
-      // console.log(k2 + nMesa + '= ' + x3 + nMesa + '"' + ');');
-
-      // eval(k2 + nMesa + '.addEventListener("click", myPusheoMesa' + nMesa + ');');
-      // console.log(k2 + nMesa + '.addEventListener("click", myPusheoMesa' + nMesa + ');');
-
-      
-      
-      
-
-      
      
-   
-
-      // let k1 = 'let ';
-      // let k2 = "mesaCarta";
-      // let x3 = 'document.getElementById("numMesa';
-      // eval(k1 + k2 + nMesa + '= ' + '""' + ';');
-      // console.log(k1 + k2 + nMesa + '= ' + '""' + ';');
-      // eval(k2 + nMesa + '= ' + x3 + nMesa + '"' + ');');
-      // console.log(k2 + nMesa + '= ' + x3 + nMesa + '"' + ');');
-      // let y4 = '.addEventListener("click", funcionPusheo);';
-      // let y5 = '.onclick = () =>' ;
-      // let y6 = 'jug1.push(cartasEnMesa';
-      // let y6a = 'miRival();console.log("mi mano es: ");console.log(jug1);document.getElementById("cards10").innerHTML = "";let indexMesa = cartasEnMesa.indexOf(cartasmesa);if (indexMesa != -1)';
-      // let y7= 'cartasEnMesa.splice(indexMesa, 1);';
-      
-  
-    
-    
-      // eval(k2+nMesa+y5+'{'+y6+nMesa+');'+y6a+'{'+y7+'}'+'};');
-      // console.log(k2+nMesa+y5+'{'+y6+'['+nMesa+']'+');'+y6a+'{'+y7+'}'+'};');
-    
-      // mesaCarta[nMesa] = document.getElementById(`numMesa${nMesa}`);
-    
-      
-          // mesaCarta[nMesa].onclick = () =>{ 
-          //     jug1.push(cartasEnMesa[${nMesa}]);
-          //     miRival();
-          //     console.log("mi mano es: ");
-          //     console.log(jug1);
-          //     document.getElementById('cards10').innerHTML = "";
-              
-          //     let indexMesa = cartasEnMesa.indexOf(cartasmesa);
-
-          //   if (indexMesa != -1){
-                
-          //     cartasEnMesa.splice(indexMesa, 1);
-          //   }
-        
-          // };
-      
     nMesa++;
         
     
     });
 
    
-  //   function funcionPusheo(){
-  //     jug1.push(cartasmesa);
-  //     miRival();
-  //     console.log("mi mano es: ");
-  //     console.log(jug1);
-  //     document.getElementById('cards10').innerHTML = "";
-      
-  //     let indexMesa = cartasEnMesa.indexOf(cartasmesa);
-
-  //   if (indexMesa != -1){
-        
-  //     cartasEnMesa.splice(indexMesa, 1);
-  //   }
-
-  // }
-    
-    // let variablecardtable = document.querySelectorAll('.cardtable');
-    // let arrayCardTable = [...variablecardtable];
-    // arrayCardTable.forEach((cartamesa) =>{
-        
-    //     cartamesa.addEventListener('click', funcionDePusheo);
-
-        // cartasEnMesa.forEach((cartamesa) =>{
-        
-        // cartamesa.addEventListener('click', funcionDePusheo);
-        
-        // function funcionDePusheo(){
-        //               jug1.push(cartasmesa);
-        //               miRival();
-        //               console.log("mi mano es: ");
-        //               console.log(jug1);
-        //               document.getElementById('cards10').innerHTML = "";
-                      
-        //               let indexMesa = cartasEnMesa.indexOf(cartasmesa);
-        
-        //                 if (indexMesa != -1){
-                        
-        //                     cartasEnMesa.splice(indexMesa, 1);
-        //                 }
-                
-
-        //   };
-        // });
-
-
-    // let mesaCarta = "";
-    //   mesaCarta = document.getElementById(`numMesa${nMesa}`).onclick = () =>{
-    //             jug1.push(cartasmesa);
-    //             miRival();
-    //             console.log("mi mano es: ");
-    //             console.log(jug1);
-    //             document.getElementById('cards10').innerHTML = "";
-                
-    //             let indexMesa = cartasEnMesa.indexOf(cartasmesa);
-  
-    //           if (indexMesa != -1){
-                  
-    //             cartasEnMesa.splice(indexMesa, 1);
-    //           }
-          
-    //         };
-        
-    // });
     
 }
 
