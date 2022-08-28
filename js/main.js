@@ -882,6 +882,8 @@ if (zonajug1 == emperador){
           <h3 class="animate__animated animate__fadeInLeft">SIN PROGRAMAR</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
           <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
+          <p id="jug" onclick="desYrec(${jug1});"> Jugador </p>
+          <p id="jug" onclick="desYrec(${pc});"> Tú Rival </p>
           <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="miRival();">Volver a jugar</a>
         </div>
 
@@ -889,7 +891,46 @@ if (zonajug1 == emperador){
           <div id="carta0" class="card2 ${zonajug1.nombre}"></div>    
        </div>
     </div>`;
+    let cambioMano = [];
+    cambioMano = jug1;
+    jug1 = pc;
+    pc = cambioMano;
+
+    function desYrec (id){
+      let a = 0;
+
+      for (const objeto of id){
+        console.log("La PC tiene estas cartas en su mano: " + objeto.combinacion + " / " + objeto.nombre + " / " + objeto.accion);
+        console.log(id + ' = ' + pc + ' / ' + jug1);
+
+            if (id == pc && objeto.nombre == "cain" || objeto.nombre == "lilith"){
+                sumPuntos();
+          
+                let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+                  
+                  <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+                      <div class="texto-main">
+                        <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
+                        <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+                        <h4 class="animate__animated animate__fadeInLeft">Obtienes ${puntospartida} punto/s.</h4>
+                        <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin: 30px 0 30px;">
+                        <p class="animate__animated animate__fadeInLeft">Tú rival tenia una carta que al REVELAR perdía. Que lastima debe ser perder así, ¿no?.</p>
+                        <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+                      </div>
+                      <div class="card2s positioncard2 ">
+                          <div id="carta0" class="card2 ${pc[a].nombre}"></div>    
+                      </div>
+                  </div>`;
+                  control = false;
+                  console.log("Encontro una carta de REVELADO y eliminación: " + objeto.nombre);
+                  break;
+              } else //descarta y roba pc
+          a++;
+              // if id==jug1 cainlilith perdiste y else descarta y roba jug1
+      }
+    }
 }
+      
 
 if (zonajug1 == emperatriz){
   robaPc();
