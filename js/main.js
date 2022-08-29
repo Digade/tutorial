@@ -146,6 +146,7 @@ let x = 1;
 let puntospartida = x;
 ////localstorage
 
+let turnoDe = ""; //si es 1 = es turno del Jug1 // si es 2 = turno PC
 
 // let puntopc = localStorage.getItem('puntos-pc');
 // localStorage.setItem('puntos-rival', parseInt(puntopc));
@@ -261,6 +262,16 @@ function mipm(id) {
 
 };
 
+function quienDescarta(){
+  let op = Math.floor(Math.random() * 2);
+  if (op == 1){
+    desYrecjug1();
+
+  } else {
+    desYrecPc();
+  }
+};
+
 function desYrecPc() {
   let a = 0;
 
@@ -312,9 +323,19 @@ function desYrecPc() {
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
 
           <p class="animate__animated animate__fadeInLeft">Su mano fue descartada y ahora tiene nuevas cartas.</p>
-          <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="miRival();">Volver a jugar</a>
+          <div id="botonParaSeguir"></div>
+          
         </div>
     </div>`;
+}
+if (turnoDe == 1){
+    
+  let paraSeguirMiRival = document.getElementById('botonParaSeguir').innerHTML =  `
+  <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="miRival();"> Seguir jugando</a>`
+} else {
+  
+  let paraSeguirMiRival = document.getElementById('botonParaSeguir').innerHTML =  `
+  <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="myInicio();"> Seguir jugando</a>`
 }
 };
 
@@ -369,9 +390,18 @@ function desYrecjug1() {
             <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
 
             <p class="animate__animated animate__fadeInLeft">Tu mano fue descartada a la mesa y ahora tienes nuevas cartas.</p>
-            <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="miRival();">Volver a jugar</a>
+            <div id="botonParaSeguir"></div>
           </div>
       </div>`;
+      if (turnoDe == 1){
+    
+        let paraSeguirMiRival = document.getElementById('botonParaSeguir').innerHTML =  `
+        <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="miRival();"> Seguir jugando</a>`
+      } else {
+        
+        let paraSeguirMiRival = document.getElementById('botonParaSeguir').innerHTML =  `
+        <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="myInicio();"> Seguir jugando</a>`
+      }
   }};
 
 
@@ -405,12 +435,13 @@ function ganaPartida() {
 
 function emperatrizJuega(){
   let zonamundoE = [];
-  console.log("salen las 1ras 4 cartas que juega El Mundo Oscuro");
+  console.log("juega emperatriz");
 
     
         zonamundoE[0] = mazo[Math.floor(Math.random() * mazo.length)];
         
-        console.log("El Mundo Oscuro juega: " + zonamundoE[0].nombre)
+        console.log("El Mundo Oscuro juega: ");  
+        console.log(zonamundoE[0].nombre);
         
 
         cartasEnMesa.push(zonamundoE[0]);
@@ -482,12 +513,14 @@ function emperatrizJuega(){
     
   }
 function interMano(){
-  robaPc();
+  
   console.log(pc);
   let cambioMano = [];
     cambioMano = jug1;
     jug1 = pc;
     pc = cambioMano;
+    
+    
   let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
     <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
@@ -495,8 +528,9 @@ function interMano(){
           <h3 class="animate__animated animate__fadeInLeft">Intercambia de manos</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
           <p class="animate__animated animate__fadeInLeft">Tú y tú rival intercambian manos. Si ambos recuerdan que tenian será una ventaja.</p>
-          
+          <div id="botonParaSeguir">
           <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="miRival();"> Seguir jugando</a>
+          </div>
           
         </div>
 
@@ -504,6 +538,14 @@ function interMano(){
              
        </div>
     </div>`;
+
+    if (turnoDe == 1){
+      let paraSeguirMiRival = document.getElementById('botonParaSeguir').innerHTML =  `
+      <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="miRival();"> Seguir jugando</a>`
+    } else {
+      let paraSeguirMiRival = document.getElementById('botonParaSeguir').innerHTML =  `
+      <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="myInicio();"> Seguir jugando</a>`
+    }
  
     let jug1Auxi = "";
     
@@ -1197,13 +1239,14 @@ if (zonajug1 == senadores){
     
     });
 
-   
+    
     
 }
 
 if (zonajug1 == emperador){
   robaPc();
   console.log(pc);
+  turnoDe = 1;
   let cambioMano = [];
     cambioMano = jug1;
     jug1 = pc;
@@ -1245,6 +1288,8 @@ if (zonajug1 == emperador){
       
 
 if (zonajug1 == emperatriz){
+  robaPc();
+  turnoDe = 1;
   emperatrizJuega();
   
 }
@@ -1592,39 +1637,36 @@ if (mazo == ""){
     }
 
     if (zonapc == emperador){
-      robaJug1();
+      turnoDe = 0;
+      let cambioMano = [];
+      cambioMano = jug1;
+      jug1 = pc;
+      pc = cambioMano;
       let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
-            <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival juega ${zonapc.nombre.toUpperCase()}</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-              <h3 class="animate__animated animate__fadeInLeft">SIN PROGRAMAR</h3>
-              <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-              <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
-              <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="myInicio();">Volver a jugar</a>
-            </div>
+        <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival juega ${zonapc.nombre.toUpperCase()}</p> 
+        <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+          <h3 class="animate__animated animate__fadeInLeft">Intercambia y alguien Descarta y Recupera</h3>
+          <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+          <p class="animate__animated animate__fadeInLeft">Tú y tú rival intercambian manos, Luego elige quien descarta y recupera su mano.</p>
+          
+          <a id="jugjug" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="quienDescarta();"> Seguir jugando </a>
+          
+          
+        </div>
 
-            <div class="card2s positioncard2 animate__animated animate__fadeInRight">
-              <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
-          </div>
+        <div id="nuevasCartas" class="card2s positioncard2 animate__animated animate__fadeInRight">
+             
+        </div>
         </div>`;
+        
     }
 
     if (zonapc == emperatriz){
       robaJug1();
-      let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
-
-        <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
-            <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival juega ${zonapc.nombre.toUpperCase()}</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-              <h3 class="animate__animated animate__fadeInLeft">SIN PROGRAMAR</h3>
-              <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-              <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
-              <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="myInicio();">Volver a jugar</a>
-            </div>
-
-            <div class="card2s positioncard2 animate__animated animate__fadeInRight">
-              <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
-          </div>
-        </div>`;
+      turnoDe = 0;
+      emperatrizJuega();
     }
 
     if (zonapc == cain){
