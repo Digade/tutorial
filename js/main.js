@@ -527,9 +527,9 @@ function interMano(){
         <div class="texto-main">
           <h3 class="animate__animated animate__fadeInLeft">Intercambia de manos</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Tú y tú rival intercambian manos. Si ambos recuerdan que tenian será una ventaja.</p>
+          <p class="animate__animated animate__fadeInLeft">Tú y tú rival intercambiaron manos. Si ambos recuerdan que tenian será una ventaja.</p>
           <div id="botonParaSeguir">
-          <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="miRival();"> Seguir jugando</a>
+          
           </div>
           
         </div>
