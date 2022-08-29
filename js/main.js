@@ -262,6 +262,26 @@ function mipm(id) {
 
 };
 
+function mipmPC() {
+  let idrandom = "";
+  idrandom = Math.floor(Math.random() * cartasEnMesa.length);
+  pc.push(cartasEnMesa[idrandom]);
+  console.log("tomo la carta: ");
+  console.log(cartasEnMesa[idrandom]);
+  console.log("PC mano es: ");
+  console.log(pc);
+  document.getElementById('cards10').innerHTML = "";
+  
+  let indexMesa = cartasEnMesa.indexOf(element => element.idrandom == idrandom);
+
+
+  if (indexMesa != -1){
+      
+    cartasEnMesa.splice(indexMesa, 1);
+  }
+
+};
+
 function quienDescarta(){
   let op = Math.floor(Math.random() * 2);
   if (op == 1){
@@ -1620,20 +1640,22 @@ if (mazo == ""){
 
     if (zonapc == senadores){
       robaJug1();
+      mipmPC();
       let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
         <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
             <div class="texto-main"><p class="animate__animated animate__fadeInLeft"> Turno del Rival juega ${zonapc.nombre.toUpperCase()}</p> <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-              <h3 class="animate__animated animate__fadeInLeft">SIN PROGRAMAR</h3>
+              <h3 class="animate__animated animate__fadeInLeft">Tu Rival Tomó esta carta</h3>
               <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-              <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
+              <p class="animate__animated animate__fadeInLeft">Y nadie podrá predecir esa carta.</p>
               <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="myInicio();">Volver a jugar</a>
             </div>
 
             <div class="card2s positioncard2 animate__animated animate__fadeInRight">
-              <div id="carta0" class="card2 ${zonapc.nombre}"></div>    
+              <div id="carta0" class="card2 ${cartasEnMesa[idrandom].nombre}"></div>    
           </div>
         </div>`;
+        
     }
 
     if (zonapc == emperador){
