@@ -172,6 +172,121 @@ function mipm(id) {
 
 };
 
+function desYrecPc() {
+  let a = 0;
+
+  for (const objeto of pc){
+    console.log("La PC tiene estas cartas en su mano: " + objeto.combinacion + " / " + objeto.nombre + " / " + objeto.accion);
+    console.log(pc + ' / ' + jug1);
+
+        if (objeto.nombre == "cain" || objeto.nombre == "lilith"){
+            sumPuntos();
+      
+            let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+              
+              <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+                  <div class="texto-main">
+                    <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
+                    <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+                    <h4 class="animate__animated animate__fadeInLeft">Obtienes ${puntospartida} punto/s.</h4>
+                    <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin: 30px 0 30px;">
+                    <p class="animate__animated animate__fadeInLeft">Tú rival tenia una carta que al REVELAR perdía. Que lastima debe ser perder así, ¿no?.</p>
+                    <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+                  </div>
+                  <div class="card2s positioncard2 ">
+                      <div id="carta0" class="card2 ${pc[a].nombre}"></div>    
+                  </div>
+              </div>`;
+              control = false;
+              console.log("Encontro una carta de REVELADO y eliminación: " + objeto.nombre);
+              break;
+        } 
+            
+          
+        
+      
+      a++;
+          
+  }
+  if (control == true) {
+          
+    for (let i = 0; i < pc.length; i++) {
+      cartasEnMesa.push(pc[i]);
+    }
+    pc = [];
+    robaPc();
+    let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+    
+    <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+        <div class="texto-main">
+          <h3 class="animate__animated animate__fadeInLeft">Tu rival descarto y Recupero</h3>
+          <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+
+          <p class="animate__animated animate__fadeInLeft">Su mano fue descartada y ahora tiene nuevas cartas.</p>
+          <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="miRival();">Volver a jugar</a>
+        </div>
+    </div>`;
+}
+};
+
+function desYrecjug1() {
+  let a = 0;
+
+  for (const objeto of jug1){
+    console.log("La PC tiene estas cartas en su mano: " + objeto.combinacion + " / " + objeto.nombre + " / " + objeto.accion);
+    console.log(pc + ' / ' + jug1);
+
+        
+        if (objeto.nombre == "cain" || objeto.nombre == "lilith"){
+                    
+              
+          let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+            
+            <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+                <div class="texto-main">
+                  <h3 class="animate__animated animate__fadeInLeft">¡Perdiste!</h3>
+                  <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+
+                  <p class="animate__animated animate__fadeInLeft">Tú tenias una carta que al REVELAR te hace perder. Que lastima debe ser perder así, ¿no?.</p>
+                  <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
+                </div>
+                <div class="card2s positioncard2 ">
+                    <div id="carta0" class="card2 ${jug1[a].nombre}"></div>    
+                </div>
+            </div>`;
+            control = false;
+            console.log("Encontro una carta de REVELADO y eliminación: " + objeto.nombre);
+            break;
+        } 
+          
+        
+        
+      
+      a++;
+          
+  }
+  if (control == true) {
+    for (let i = 0; i < jug1.length; i++) {
+      cartasEnMesa.push(jug1[i]);
+      
+    }
+    jug1 = [];
+    robaJug1();
+    let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+      
+      <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
+          <div class="texto-main">
+            <h3 class="animate__animated animate__fadeInLeft">Descartaste y Recuperaste</h3>
+            <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
+
+            <p class="animate__animated animate__fadeInLeft">Tu mano fue descartada a la mesa y ahora tienes nuevas cartas.</p>
+            <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="miRival();">Volver a jugar</a>
+          </div>
+      </div>`;
+  }};
+
+
+
 function ganaPartida() {
   Swal.fire({
     title: '¡Has ganado el tutorial!',
@@ -293,7 +408,7 @@ function robaJug1(){
 
 function robaPc(){
   cartarandom = mazo[Math.floor(Math.random() * mazo.length)];
-  console.log("esta es la cartarandom que ROBA PC: " + cartarandom.nombre);  
+  // console.log("esta es la cartarandom que ROBA PC: " + cartarandom.nombre);
   pc.push(cartarandom);
     for (i = 0; i <= 1; i++){
     console.log(jug1[i]);
@@ -317,6 +432,7 @@ function masCartasEnMano(){
               </div>    
           </div>`;
           console.log("final generar cartas en el ID bufon. Jugador 1 tiene: " + jug1[i].nombre);
+      
   }
   document.getElementById('bufon').innerHTML = htmlAux;
   
@@ -346,8 +462,8 @@ function myMano(){
         eliminar(jug1[i]);
 
     }
-
-
+    
+    
 
 
     let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
@@ -464,7 +580,7 @@ function myTutorial(){
 // if (zonapc != "") {
 //   inicio();
 // }
-console.log("el mazo tiene esta cantidad de cartas: " + mazo.length);
+
 
 console.log("Jugador 1 juega: " + jug1[numcarta].nombre);
 
@@ -652,7 +768,8 @@ if (zonajug1.nombre == "sibila") {
 }
 
 if (zonajug1.nombre == "gangster") {
-  
+  jug1.sort((a, b) => b.valor.localeCompare(a.valor));
+console.log("el mazo tiene esta cantidad de cartas: " + mazo.length);
 
   if (jug1[0].valor == pc[0].valor) {
     robaPc();
@@ -875,60 +992,43 @@ if (zonajug1 == senadores){
 if (zonajug1 == emperador){
   robaPc();
   console.log(pc);
+  let cambioMano = [];
+    cambioMano = jug1;
+    jug1 = pc;
+    pc = cambioMano;
   let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
 
     <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
         <div class="texto-main">
-          <h3 class="animate__animated animate__fadeInLeft">SIN PROGRAMAR</h3>
+          <h3 class="animate__animated animate__fadeInLeft">Intercambia y alguien Descarta y Recupera</h3>
           <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-          <p class="animate__animated animate__fadeInLeft">Si te juegan una carta que te eliminará podrás NEGARLA y el efecto no se produce. Si el rival juega algo favorable podrás ACEPTARLA y ese efecto se produce.</p>
-          <p id="jug" onclick="desYrec(${jug1});"> Jugador </p>
-          <p id="jug" onclick="desYrec(${pc});"> Tú Rival </p>
-          <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="miRival();">Volver a jugar</a>
+          <p class="animate__animated animate__fadeInLeft">Tú y tú rival intercambian manos, Luego elige quien descarta y recupera su mano.</p>
+          <a id="jugjug" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="desYrecjug1();"> Jugador </a>
+          <a id="pcpc" style="z-index: 3;width: 340px;" class="btn btn-lg btn-secondary active animate__animated animate__fadeInUp" role="button" aria-pressed="true"  onclick="desYrecPc();"> Tú Rival </a>
+          
         </div>
 
-        <div class="card2s positioncard2 animate__animated animate__fadeInRight">
-          <div id="carta0" class="card2 ${zonajug1.nombre}"></div>    
+        <div id="nuevasCartas" class="card2s positioncard2 animate__animated animate__fadeInRight">
+             
        </div>
     </div>`;
-    let cambioMano = [];
-    cambioMano = jug1;
-    jug1 = pc;
-    pc = cambioMano;
-
-    function desYrec (id){
-      let a = 0;
-
-      for (const objeto of id){
-        console.log("La PC tiene estas cartas en su mano: " + objeto.combinacion + " / " + objeto.nombre + " / " + objeto.accion);
-        console.log(id + ' = ' + pc + ' / ' + jug1);
-
-            if (id == pc && objeto.nombre == "cain" || objeto.nombre == "lilith"){
-                sumPuntos();
-          
-                let borrarzonacarta = document.getElementById('zonacarta').innerHTML = `
+ 
+    let jug1Auxi = "";
+    
+    for (let i = 0; i < jug1.length; i++) {
+      
+      jug1Auxi +=
+             `
                   
-                  <div id="zonacarta" class="seomain cont-pjs" style="background-image: url(../img/fondotutorial.webp);">
-                      <div class="texto-main">
-                        <h3 class="animate__animated animate__fadeInLeft">¡Ganaste!</h3>
-                        <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin-bottom: 30px;">
-                        <h4 class="animate__animated animate__fadeInLeft">Obtienes ${puntospartida} punto/s.</h4>
-                        <img alt="linea divisoria" class="sliderlinea animate__animated animate__flipInY" src="../img/divsim.svg" alt=""  style="margin: 30px 0 30px;">
-                        <p class="animate__animated animate__fadeInLeft">Tú rival tenia una carta que al REVELAR perdía. Que lastima debe ser perder así, ¿no?.</p>
-                        <a href="#tutorial"style="z-index: 3;width: 340px;" class="btn btn-lg btn-success active animate__animated animate__fadeInUp" role="button" aria-pressed="true" onclick="location.reload(true);">Volver a jugar</a>
-                      </div>
-                      <div class="card2s positioncard2 ">
-                          <div id="carta0" class="card2 ${pc[a].nombre}"></div>    
-                      </div>
-                  </div>`;
-                  control = false;
-                  console.log("Encontro una carta de REVELADO y eliminación: " + objeto.nombre);
-                  break;
-              } else //descarta y roba pc
-          a++;
-              // if id==jug1 cainlilith perdiste y else descarta y roba jug1
-      }
-    }
+             <div id="carta${i}" class="card2 ${jug1[i].nombre}"></div>  
+                  `;
+
+      console.log("estas son tus nuevas cartas: " + jug1);
+
+      document.getElementById('nuevasCartas').innerHTML = jug1Auxi;
+    
+    };
+    
 }
       
 
